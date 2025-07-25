@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <title>AeroVue - Discover, Watch, Learn</title>  
+    <link rel="stylesheet" href="styles.css"/>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Basic Meta -->  
+    <meta name="description" content="AeroVue - A clean, modern platform to watch and manage your video content easily.">  
+    <meta name="keywords" content="AeroVue, video platform, watch videos, HTML CSS JavaScript">  
+    <meta name="author" content="Your Name">
+
+    <!-- Open Graph -->  
+    <meta property="og:type" content="website" />  
+    <meta property="og:url" content="https://yourdomain.com/" />  
+    <meta property="og:title" content="AeroVue - Watch and Manage Your Videos Easily" />  
+    <meta property="og:description" content="A clean, modern platform to watch and manage your video content easily." />  
+    <meta property="og:image" content="https://yourdomain.com/preview.jpg" />  
+
+    <!-- Twitter -->  
+    <meta name="twitter:card" content="summary_large_image" />  
+    <meta name="twitter:url" content="https://yourdomain.com/" />  
+    <meta name="twitter:title" content="AeroVue - Watch and Manage Your Videos Easily" />  
+    <meta name="twitter:description" content="A clean, modern platform to watch and manage your video content easily." />  
+    <meta name="twitter:image" content="https://yourdomain.com/preview.jpg" />  
+
+    <link rel="icon" href="https://yourdomain.com/favicon.png" type="image/png">
+</head>  
+<body>  
+
+    <header class="header glass">  
+        <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">AeroVue</div>
+        <div class="search-container">  
+            <i class="fas fa-search search-icon"></i>  
+            <input type="text" id="searchInput" placeholder="Search videos..." />  
+        </div>  
+    </header>  
+
+    <main>
+        <section id="video-gallery" class="video-grid">
+            <!-- Videos will be dynamically inserted here -->
+        </section>
+    </main>  
+
+    <footer class="footer">  
+        © 2025 AeroVue. All rights reserved.  
+    </footer>  
+
+    <!-- Scripts -->
+    <script src="videos.js"></script>
+    <script>
+        const videoGallery = document.getElementById('video-gallery');
+
+        videos.forEach(video => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.style.cursor = 'pointer';
+            card.onclick = () => window.location.href = `watch.html?id=${video.id}`;
+
+            const img = document.createElement('img');
+            img.src = video.thumbnail || 'https://via.placeholder.com/400x225.png?text=No+Thumbnail';
+            img.alt = video.title;
+            img.style.objectFit = 'contain';
+            img.style.width = '100%';
+            img.style.height = 'auto';
+            img.style.background = 'black';
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'video-content';
+
+            const title = document.createElement('h3');
+            title.textContent = video.title;
+
+            const desc = document.createElement('p');
+            desc.textContent = video.description;
+
+            contentDiv.appendChild(title);
+            contentDiv.appendChild(desc);
+            card.appendChild(img);
+            card.appendChild(contentDiv);
+            videoGallery.appendChild(card);
+        });
+    </script>
+</body>  
+</html>
